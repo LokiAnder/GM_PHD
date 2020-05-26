@@ -1,20 +1,4 @@
-%GM_PHD_Estimate
-%Matlab code by Bryan Clarke b.clarke@acfr.usyd.edu.au 
 
-%This file estimates the positions of targets tracked by the PHD filter.
-%We need to extract the likely target positions from the PHD (i.e. we need to find the peaks of the PHD).
-%This is actually fairly tricky. The naive approach is to pull out targets with the
-%highest weights, but this is FAR from the best approach. A large covariance will pull down
-%the peak size, and when targets are close together or have high covariances, there can be
-%superposition effects which shift the peak.
-
-%This just implements the method in Vo&Ma, which is pulling out every target with a weight over  
-%weightThresholdToBeExtracted (defined in GM_PHD_Initialisation). There is
-%the option of repeatedly printing out targets with rounded weights greater
-%than 1 (i.e. if two or more strong targets are mergde and the weight
-%rounds to 2/3/4/etc, display the target at that point multiple times when
-%VERBOSE is set to 1). This will NOT change filter performance as the
-%extracted state estimate is not fed back into the filter.
 s = sprintf('Step 6: Estimate target states');
 disp(s);
 X_k = [];

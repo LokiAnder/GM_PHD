@@ -1,7 +1,4 @@
-%GM_PHD_Predict_Existing
-%Matlab code by Bryan Clarke b.clarke@acfr.usyd.edu.au 
 
-%This file performs prediction for existing targets
 s = sprintf('Step 2: Prediction for existing targets.');
 disp(s);
 

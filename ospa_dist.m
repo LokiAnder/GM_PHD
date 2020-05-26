@@ -1,18 +1,6 @@
-%This code is available online at http://ba-ngu.vo-au.com/vo/OSPA_for_Tracks.zip
+
 function [dist varargout]= ospa_dist(X,Y,c,p)
-%
-%B. Vo.  26/08/2007
-%Compute Schumacher distance between two finite sets X and Y
-%as described in the reference
-%[1] D. Schuhmacher, B.-T. Vo, and B.-N. Vo, "A consistent metric for performance evaluation in multi-object 
-%filtering," IEEE Trans. Signal Processing, Vol. 56, No. 8 Part 1, pp. 3447– 3457, 2008.
-%
-%Inputs: X,Y-   matrices of column vectors
-%        c  -   cut-off parameter (see [1] for details)
-%        p  -   p-parameter for the metric (see [1] for details)
-%Output: scalar distance between X and Y
-%Note: the Euclidean 2-norm is used as the "base" distance on the region
-%
+
 
 if nargout ~=1 & nargout ~=3
    error('Incorrect number of outputs'); 

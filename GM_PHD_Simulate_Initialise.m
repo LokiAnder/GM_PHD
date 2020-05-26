@@ -1,13 +1,4 @@
-%GM_PHD_Simulate_Initialise
-%Matlab code by Bryan Clarke b.clarke@acfr.usyd.edu.au 
 
-%This file initialises the simulation described in example 1 of Vo&Ma 2006.
-%The velocity and starting position values are rough estimates obtained by visual
-%inspection of the simulation. 
-%They can probably be changed without things breaking.
-
-%If you want to use this GM-PHD filter for your own problem, you will need
-%to replace this script with your own.
 
 %%控制参数
 noiseScaler = 1.0;       %控制噪声的强度

@@ -1,11 +1,4 @@
-%GM_PHD_Prune
-%Matlab code by Bryan Clarke b.clarke@acfr.usyd.edu.au 
 
-%This file performs merging and pruning after the PHD update.
-%The PHD update creates a combinatorial explosion in the number of targets.
-%We prune the low-weight ones and merge the close-together ones. The weight
-%threshold T and distance threshold L that control this process are set in
-%GM_PHD_Initialisation.
 s = sprintf('Step 5: Prune and merge targets.');
 disp(s);
 

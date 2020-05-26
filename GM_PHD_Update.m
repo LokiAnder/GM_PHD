@@ -1,9 +1,4 @@
-%GM_PHD_Update
-%Matlab code by Bryan Clarke b.clarke@acfr.usyd.edu.au 
 
-%This file performs a PHD filter update on the targets
-%This is basically a brute-force Kalman update of every target with every
-%measurement and creating a new target from the update results.
 
 s = sprintf('Step 4: Performing update.');
 disp(s);

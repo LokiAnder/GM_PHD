@@ -1,20 +1,4 @@
-%GM_PHD_Predict_Birth
-%Matlab code by Bryan Clarke b.clarke@acfr.usyd.edu.au 
 
-%This file performs prediction for newly birthed and spawned targets
-%This is necessary since their positions were initialised in a previous timestep and they may
-%have moved between then and now
-%We iterate through j = 1..J_b,k where J_b,k is number of birthed landmarks
-%at time k (but the landmarks correspond to the measurement from time k-1)
-%and j = 1...J_s,k where J_s,k is the number of spawned landmarks at time k
-%(but the landmarks correspond to the measurement from time k-1).
-%For this implementation, birthed and spawned targets are identical except
-%they have weights that are calculated from different functions, and
-%different starting covariances. A target is spawned or birthed depending
-%on which weighting function will give it a higher starting weight.
-
-%The means of these will be the position in Cartesian space where they are detected
-%The covariances & weights are calculated according to Vo&Ma
 s = sprintf('Step 1: Prediction for birthed and spawned targets.');
 disp(s);
 

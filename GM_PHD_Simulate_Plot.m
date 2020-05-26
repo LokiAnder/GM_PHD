@@ -1,9 +1,4 @@
-%GM_PHD_Simulate_Plot
-%Matlab code by Bryan Clarke b.clarke@acfr.usyd.edu.au 
-%error_ellipse is by AJ Johnson, taken from Matlab Central http://www.mathworks.com.au/matlabcentral/fileexchange/4705-errorellipse
 
-%This file plots the current measurements, true target position and estimated target
-%position, as well as a history of estimated target positions.
 
 disp('Plotting...')
 %Measurements

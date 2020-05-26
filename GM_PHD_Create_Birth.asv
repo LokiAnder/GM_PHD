@@ -1,19 +1,4 @@
-%GM_PHD_Create_Birth
-%Matlab code by Bryan Clarke b.clarke@acfr.usyd.edu.au 
 
-%This file performs the processing on measurements to extract new targets
-%and populates the birth lists (mean, weight, covariance) needed to instantiate them next iteration.
-
-%This is not formally spelt out in Vo&Ma so I have used my best judgement to
-%come up with a method to initialise targets. Targets are initialised as
-%static (using the position of current measurements) and/or dynamic (using
-%two generations of measurements and calculating the movement between).
-%If only static targets are added, the number of new targets = the number
-%of measurements. 
-%If only dynamic targets are added, the number of new targets = the number of
-%measurements this teration * the number of measurements last iteration
-%If both static and dynamic targets are added, the number of new targets is
-%equal to the sum of these.
 disp('Step 7: Creating new targets from measurements, for birthing next iteration');
 w_birth = [];
 m_birth = [];
@@ -24,13 +9,6 @@ P_spawn = [];
 numBirthedTargets = 0;
 numSpawnedTargets = 0;
 
-%We create targets using two generations of measurements.
-%The first generation is used to calculate the velocity (dx/dt) to the
-%second generation.
-%The second generation gives the position.
-%We also add a set of targets from the second generation but with velocity
-%zero, since some may be unlinked to the first generation, but we have no
-%velocity information for them.
 if((addVelocityForNewTargets == true) && (k >= 2))%If we want to add targets with initial velocities.If only one iteration complete, cannot calculate velocity
     %Each measurement consists of 2 rows
     thisMeasRowRange = k;

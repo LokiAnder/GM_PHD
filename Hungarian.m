@@ -1,27 +1,9 @@
-%This code is available online at http://ba-ngu.vo-au.com/vo/OSPA_for_Tracks.zip
+
 function [Matching,Cost] = Hungarian(Perf)
-% 
-% [MATCHING,COST] = Hungarian_New(WEIGHTS)
-%
-% A function for finding a minimum edge weight matching given a MxN Edge
-% weight matrix WEIGHTS using the Hungarian Algorithm.
-%
-% An edge weight of Inf indicates that the pair of vertices given by its
-% position have no adjacent edge.
-%
-% MATCHING return a MxN matrix with ones in the place of the matchings and
-% zeros elsewhere.
-% 
-% COST returns the cost of the minimum matching
-
-% Written by: Alex Melin 30 June 2006
-
 
  % Initialize Variables
  Matching = zeros(size(Perf));
 
-% Condense the Performance Matrix by removing any unconnected vertices to
-% increase the speed of the algorithm
 
   % Find the number in each column that are connected
     num_y = sum(~isinf(Perf),1);
