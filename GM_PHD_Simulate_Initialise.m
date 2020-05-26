@@ -61,15 +61,15 @@ figure(2);
 subplot(2,1,1);
 hold on;
 axis([0 100 -1000 1000]);
-xlabel('Simulation step');
-ylabel('X position of measurement (m)');
-title('Measurement X coordinates');
+xlabel('时间');
+ylabel('在X轴上的位置 (m)');
+title('量测在X轴上的关系');
 subplot(2,1,2);
 hold on;
 axis([0 100 -1000 1000]);
-xlabel('Simulation step');
-ylabel('Y position of measurement (m)');
-title('Measurement Y coordinates');
+xlabel('时间');
+ylabel('在Y轴上的位置 (m)');
+title('量测在Y轴上的关系');
 
 %Performance metric plot
 if(CALCULATE_OSPA_METRIC == 1)

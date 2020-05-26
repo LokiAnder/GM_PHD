@@ -1,18 +1,4 @@
-%GM_PHD_Simulate_Measurements
-%Matlab code by Bryan Clarke b.clarke@acfr.usyd.edu.au 
 
-%This file generates simulated measurement data for  the simulation
-%described in Vo&Ma.
-%There will be gaussian noise on the measurement and Poisson-distributed clutter
-%in the environment. 
-
-%If you want to use this PHD filter implementation for another problem, you
-%will need to replace this script with another one that populates Z,
-%zTrue, and simMeasurementHistory (Z is used in a lot of the update code,
-%zTrue and simMeasurementHistory are used in GM_PHD_Simulate_Plot)
-
-%Note: It is possible to get no measurements if the target is not detected
-%and there is no clutter
 s = sprintf('Step Sim: Simulating measurements.');
 disp(s);
 
@@ -26,7 +12,7 @@ if(~isempty(simTarget3State))
 end
 %新生目标3当k为simTarget3spawnTime时产生
 if(k == simTarget3SpawnTime)
-    %simTarget3State = simTarget1State;
+    %simTarget3State = simTarget1State;%当进行衍生目标的实验时使用该段代码
     simTarget3State = [240;364;-7;-4]
     simTarget3State(3:4) = simTarget3Vel;
 end

@@ -4,26 +4,31 @@ clear all;
 close all;
 clc;
 
+
 GM_PHD_Initialisation;
+
 %仿真目标的初始状态及仿真数量
-GM_PHD_Simulate_Initialise;
-%如果KNOWN_TARGET置位则使用静态的数据
+    GM_PHD_Simulate_Initialise;
 if KNOWN_TARGET == 1
-t1start = [simTarget1Start(1:2); simTarget1Vel];
-t2start = [simTarget2Start(1:2); simTarget2Vel];
-m_birth = [t1start, t2start];
-w_birth = [birth_intensity(t1start), birth_intensity(t2start)];
-P_birth = [covariance_birth, covariance_birth];
-numBirthedTargets = 2;
+    t1start = [simTarget1Start(1:2); simTarget1Vel];
+    t2start = [simTarget2Start(1:2); simTarget2Vel];
+    m_birth = [t1start, t2start];
+    w_birth = [birth_intensity(t1start), birth_intensity(t2start)];
+    P_birth = [covariance_birth, covariance_birth];
+    numBirthedTargets = 2;
 end
 
-%主循环
-while (k < endTime)%k = timestep，设置为100次
+%Main loop
+while (k < endTime)%k = timestep
     k = k + 1;
     s = sprintf('======迭代 %d 次======', k);
     disp(s);
+        
+  
     %就是这里需要通过修改simulate measurements 来改变量测从而实现不同的测试数据
-    GM_PHD_Simulate_Measurements;  
+       GM_PHD_Simulate_Measurements;  %Linear KF measurements are simulated direct observations [X; Y] of the target positions
+   
+   
     %第一步: 对新生或衍生目标的预测 
     GM_PHD_Predict_Birth; 
     %第二步: 对现有目标的预测
@@ -36,14 +41,18 @@ while (k < endTime)%k = timestep，设置为100次
     GM_PHD_Prune;
     %第六步: 估计目标的位置
     GM_PHD_Estimate
+
     %第七步: 创建新生目标的数据列表用于下一次迭代.
     GM_PHD_Create_Birth; 
     %第八步: 计算ospa指标
     GM_PHD_Calculate_Performance_Metric;
+    
     %第九步: 依照结果显示图表
     GM_PHD_Simulate_Plot;
+
+    
     if(VERBOSE == true)
-        pause;%暂停一秒，为了看清楚三个目标在观测时间下的轨迹
+        pause;%Pause to allow reading of the text
     end
 
 end

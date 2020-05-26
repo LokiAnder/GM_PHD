@@ -63,11 +63,11 @@ if((addVelocityForNewTargets == true) && (k >= 2))%If we want to add targets wit
                     maxSpawnWeight = thisWeight;
                 end
             end
-            %检查新生目标强度是否大于衍生目标权重.
+            %检查新生目标是否大于衍生目标权重.
             if(birthWeight > maxSpawnWeight)
                 %如果是就是新生的目标
                 w_i = birthWeight;
-                %初始化协方差
+                %Initialise the covariance
                 P_i = covariance_birth;
                 w_birth = [w_birth, w_i];
                 m_birth = [m_birth m_i];
@@ -76,7 +76,7 @@ if((addVelocityForNewTargets == true) && (k >= 2))%If we want to add targets wit
             else
                 %检测为衍生目标
                 w_i = maxSpawnWeight;
-                %初始化协方差
+                %Initialise the covariance
                 P_i = covariance_spawn;
                 w_spawn = [w_spawn, w_i];
                 m_spawn = [m_spawn, m_i];
