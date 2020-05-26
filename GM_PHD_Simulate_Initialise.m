@@ -9,9 +9,9 @@
 %If you want to use this GM-PHD filter for your own problem, you will need
 %to replace this script with your own.
 
-%%Control parameters
-noiseScaler = 1.0;       %Adjust the strength of the noise on the measurements by adjusting this. Useful for debugging.
-nClutter = 50; %Assume constant 50 clutter measurements. Since clutter is Poisson distrbuted it might be more accurate to use nClutter = poissrnd(50) if you have the required Matlab toolbox. Constant 50 clutter works well enough for simulation purposes.
+%%控制参数
+noiseScaler = 1.0;       %控制噪声的强度
+nClutter = 50; %假设有多少个杂波
 
 %I haven't included descriptions of every variable because their names are
 %fairly self-explanatory
@@ -24,7 +24,7 @@ simTarget3End = [-200, -750]';
 simTarget1Vel = (simTarget1End - simTarget1Start(1:2)) / endTime;
 simTarget2Vel = (simTarget2End - simTarget2Start(1:2)) / endTime;
 %目标3的速度
-simTarget3Vel = [-20; -4];
+simTarget3Vel = [-7; -4];
 simTarget1Start(3:4) = simTarget1Vel;
 simTarget2Start(3:4) = simTarget2Vel;
 simTarget3Start(3:4) = simTarget3Vel;

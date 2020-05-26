@@ -16,7 +16,7 @@
 s = sprintf('Step Sim: Simulating measurements.');
 disp(s);
 
-%Simulate target movement
+%仿真实际目标的移动
 %每一次迭代运行时计算当前的状态
 simTarget1State = F * simTarget1State;
 simTarget2State = F * simTarget2State;
@@ -26,18 +26,18 @@ if(~isempty(simTarget3State))
 end
 %新生目标3当k为simTarget3spawnTime时产生
 if(k == simTarget3SpawnTime)
-    simTarget3State = simTarget2State;
-    %simTarget3State = [240;364;-20;-4]
+    %simTarget3State = simTarget1State;
+    simTarget3State = [240;364;-7;-4]
     simTarget3State(3:4) = simTarget3Vel;
 end
 
-%Save target movement for plotting
+%保存目标的行径历史用于plot
 simTarget1History = [simTarget1History, simTarget1State];
 simTarget2History = [simTarget2History, simTarget2State];
 simTarget3History = [simTarget3History, simTarget3State];
 
-%First, we generate some clutter in the environment.
-clutter = zeros(2,nClutter);%The observations are of the form [x; y]
+%生成噪声
+clutter = zeros(2,nClutter);%所有的量测都被限制在[x,y]这个范围内
 for i = 1:nClutter
     clutterX = rand * (xrange(2) - xrange(1)) + xrange(1); %Random number between xrange(1) and xrange(2), uniformly distributed.
     clutterY = rand * (yrange(2) - yrange(1)) + yrange(1); %Random number between yrange(1) and yrange(2), uniformly distributed.
@@ -46,7 +46,7 @@ for i = 1:nClutter
     clutter(2,i) = clutterY;
 end
 
-%We are not guaranteed to detect the target - there is only a probability
+%因为实际情况下无法保证一定能够探测到目标，所以将量测值转换为概率密度
 
 detect1 = rand;
 detect2 = rand;
@@ -75,12 +75,15 @@ else
     measY3 = [];
 end
 
-%Generate true measurement
+%产生实际的量测数据集
 Z = [ [measX1 measX2 measX3]; [measY1 measY2 measY3] ];
 zTrue = Z;%Store for plotting
 
-%Append clutter
+%添加噪声
 Z = [Z, clutter];
-
-%Store history
+if(~isempty(simTarget3State))
+    fake_x=[fake_x,measX3]
+    fake_y=[fake_y,measY3]
+end
+%存储量测历史
 simMeasurementHistory{k} =  Z;

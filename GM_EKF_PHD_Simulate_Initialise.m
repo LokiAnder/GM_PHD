@@ -60,20 +60,20 @@ clf;
 subplot(2,1,1);
 hold on;
 axis([0, 100, -1000, 1000]);
-xlabel('Simulation step');    
-ylabel('X position of measurement (m)');
-title('Measurement X coordinates');
+xlabel('仿真步');    
+ylabel('量测的值X  (m)');
+title('测量值在 X 上的关系');
 subplot(2,1,2);
 hold on;
 axis([0, 100, -1000, 1000]);
-xlabel('Simulation step');    
-ylabel('Y position of measurement (m)');
-title('Measurement Y coordinates');
+xlabel('仿真步');    
+ylabel('量测的值Y (m)');
+title('量测值在Y 上的关系');
 
 %Performance metric plot
 if(CALCULATE_OSPA_METRIC == 1)
     figure(3);
     clf;
-    xlabel('Simulation step');
-    ylabel('OSPA error metric (higher is worse)');
+    xlabel('仿真步');
+    ylabel('OSPA 值');
 end

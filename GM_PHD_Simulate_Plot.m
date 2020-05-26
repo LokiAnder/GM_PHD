@@ -34,6 +34,9 @@ end
 if(~isempty(X_k_history))
     plot(X_k_history(1,:), X_k_history(2,:), 'om');
 end
+if(~isempty(fake_x))
+    plot(fake_x,fake_y, 'om');
+end
 xlabel('X');
 ylabel('Y');
 title('模拟目标及预测位置');
@@ -68,6 +71,9 @@ plot(k, zTrue(1,:), 'xk');%X coord of true measurement
 if(~isempty(X_k))
     plot(k, X_k(1,:), 'om');
 end
+if(~isempty(measX3))
+    plot(k, measX3, 'om');
+end
 subplot(2,1,2);
 plot(k, Z(2,:), 'xk');%Y coord of clutter measurements
 if(~isempty(zTrue))
@@ -75,6 +81,9 @@ if(~isempty(zTrue))
 end
 if(~isempty(X_k))
     plot(k, X_k(2,:), 'om');
+end
+if(~isempty(measY3))
+    plot(k, measY3, 'om');
 end
 
 %OSPA error metric plot

@@ -151,3 +151,6 @@ if(USE_EKF == 0)
     R = sigma_r^2 * I2;%Sensor noise covariance. used in R2 (below)
     R2 = [ [R, Z2]; [Z2, R] ];%Measurement covariance, expanded to both position & velocity. Used in GM_PHD_Construct_Update_Components. NOTE: This assumes that speed measurements have the same covariance as position measurements. I have no mathematical justification for this.
 end
+
+fake_x=[];
+fake_y=[];
